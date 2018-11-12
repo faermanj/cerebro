@@ -59,3 +59,8 @@ typings/
 
 # next.js build output
 .next
+crawl-meetup/.invoke.sh
+.vscode/launch.json
+crawl-meetup/.meetup.key
+crawl-meetup/package-lock.json
+crawl-meetup/src/package-lock.json

@@ -1,0 +1,31 @@
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+    crawl-meetup
+
+    Sample SAM Template for crawl-meetup
+Parameters:
+  Multiverse:
+    Type: String
+    Default: ibex
+  MeetupApiKey:
+    Type: String
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+    Function:
+        Timeout: 30
+        MemorySize: 128
+Resources:
+    CrawlMeetupFn:
+        Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+        Properties:
+            CodeUri: src/
+            Handler: lambda.crawl_meetup
+            Runtime: nodejs8.10
+            Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+                Variables:
+                    MeetupApiKey: !Ref MeetupApiKey
+                    CommandLakeName:
+                        Fn::ImportValue: 
+                            !Sub "${Multiverse}:CommandLakeName"

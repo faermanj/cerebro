@@ -1,0 +1,14 @@
+{
+  "name": "hello_world",
+  "version": "1.0.0",
+  "description": "hello world sample for NodeJS",
+  "main": "src/index.js",
+  "repository": "",
+  "author": "SAM CLI",
+  "license": "MIT",
+  "dependencies": {
+    "meetup-api": "1.4.33"
+  },
+  "scripts": {},
+  "devDependencies": {}
+}

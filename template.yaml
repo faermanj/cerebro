@@ -1,0 +1,21 @@
+# aws cloudformation create-stack --stack-name cerebro-core --template-body file://template.yaml
+Parameters:
+  Multiverse:
+    Type: String
+    Default: ibex 
+Resources:
+  CommandLake:
+    Type: AWS::S3::Bucket
+  QueryLake:
+    Type: AWS::S3::Bucket
+Outputs:
+  CommandLakeName:
+    Description: Comand Lake Bucket Name
+    Value: !Ref CommandLake
+    Export:
+      Name: !Sub "${Multiverse}:CommandLakeName"
+  QueryLakeName:
+    Description: Query Lake Bucket Name
+    Value: !Ref QueryLake
+    Export:
+      Name: !Sub "${Multiverse}:QueryLakeName"      
